@@ -11,8 +11,8 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 const {width: WIDTH} = Dimensions.get('window');
 
-import bgImage from './images/background.jpg';
-import logoImage from './images/logo.png';
+import bgImage from '../images/background.jpg';
+import logoImage from '../images/logo.png';
 
 const App = () => {
   return (
