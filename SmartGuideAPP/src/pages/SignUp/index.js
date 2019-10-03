@@ -1,8 +1,12 @@
 import React from 'react';
 import {View} from 'react-native';
 
-// import { Container } from './styles';
+import BackgroundColor from '~/components/Background';
 
 export default function SignUp() {
-  return <View />;
+  return (
+    <BackgroundColor>
+      <View />
+    </BackgroundColor>
+  );
 }
