@@ -13,7 +13,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default function SignUp({navigation}) {
+export default function Home({navigation}) {
   let inputs = {};
 
   return (

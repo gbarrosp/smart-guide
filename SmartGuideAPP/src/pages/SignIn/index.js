@@ -15,7 +15,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default class Home extends Component {
+export default class SignIn extends Component {
   constructor() {
     super();
     this.state = {
@@ -62,7 +62,7 @@ export default class Home extends Component {
               }}
             />
 
-            <SubmitButton onPress={() => {}}>Entrar</SubmitButton>
+            <SubmitButton onPress={() => navigation.navigate('Home')}>Entrar</SubmitButton>
             <SubmitButton onPress={() => navigation.navigate('SignUp')}>
               Cadastrar
             </SubmitButton>
