@@ -31,6 +31,8 @@ export default class Home extends Component {
   };
 
   render() {
+    const {navigation} = this.props;
+
     return (
       <BackgroundColor>
         {/* <ImageBackground source={bgImage} style={styles.backgroundContainer}> */}
@@ -61,10 +63,12 @@ export default class Home extends Component {
             />
 
             <SubmitButton onPress={() => {}}>Entrar</SubmitButton>
-            <SubmitButton onPress={() => {}}>Cadastrar</SubmitButton>
+            <SubmitButton onPress={() => navigation.navigate('SignUp')}>
+              Cadastrar
+            </SubmitButton>
           </Form>
 
-          <SignLink onPress={() => {}}>
+          <SignLink onPress={() => navigation.navigate('SignUp')}>
             <SignLinkText>Esqueci minha senha</SignLinkText>
           </SignLink>
         </Container>
