@@ -2,28 +2,49 @@ import React, {Component} from 'react';
 
 import logoImage from '~/assets/logo.png';
 import BackgroundColor from '~/components/Background';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {
   Container,
-  Image,
-  Form,
-  FormInput,
-  SubmitButton,
-  SignLink,
-  SignLinkText,
+  Header,
+  Footer,
+  HelpIcon,
+  SettingsIcon,
+  LogoText,
+  Scan,
+  ListIcon,
+  AddItemIcon
 } from './styles';
 
-export default function SignUp({navigation}) {
+export default function Home({navigation}) {
   let inputs = {};
 
   return (
     <BackgroundColor>
       <Container>
-        <Image source={logoImage} />
-        {/* This button is just for help developing */}
-        <SignLink onPress={() => navigation.navigate('SignIn')}>
-          <SignLinkText>Voltar</SignLinkText>
-        </SignLink>
+        <Header>
+          <HelpIcon>
+            <Icon name={'help-circle'} size={40} color="white"></Icon>
+          </HelpIcon>
+          <LogoText onPress={() => navigation.navigate('SignIn')}>SmartGuide</LogoText>
+          <SettingsIcon>
+            <Icon name={'settings'} size={40} color="white"></Icon>
+          </SettingsIcon>
+        </Header>
+
+        <Scan>
+          <Icon name={'camera'} size={150} color="white"></Icon>
+        </Scan>
+
+        <Footer>
+          <ListIcon>
+            <Icon name={'list'} size={40} color="white"></Icon>
+          </ListIcon>
+          <AddItemIcon>
+            <Icon name={'plus-circle'} size={40} color="white"></Icon>
+          </AddItemIcon>
+        </Footer>
+
       </Container>
     </BackgroundColor>
   );
