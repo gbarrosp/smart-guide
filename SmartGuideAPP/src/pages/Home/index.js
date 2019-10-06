@@ -42,7 +42,9 @@ export default function Home({navigation}) {
             <Icon name={'list'} size={40} color="white"></Icon>
           </ListIcon>
           <AddItemIcon>
-            <Icon name={'plus-circle'} size={40} color="white"></Icon>
+            <Icon name={'plus-circle'} size={40} color="white"
+              onPress={() => navigation.navigate('NewStand')}
+            />
           </AddItemIcon>
         </Footer>
 
