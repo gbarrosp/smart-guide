@@ -5474,7 +5474,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5606,6 +5606,30 @@ react-native-safe-area-view@^0.14.1:
   dependencies:
     debounce "^1.2.0"
 
+react-native-show-hide-toggle-box@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-show-hide-toggle-box/-/react-native-show-hide-toggle-box-1.0.1.tgz#93e0e89b6356cf280ce3a6c6270869a423bf1d71"
+  integrity sha1-k+Dom2NWzygM46bGJwhppCO/HXE=
+  dependencies:
+    react-native-vector-icons "^4.0.0"
+
+react-native-togglebox@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-togglebox/-/react-native-togglebox-1.0.3.tgz#df8e9370fa360361cf2f84e70a9bfa8a719b4e73"
+  integrity sha512-bzSHSIPelbOd7mkeW9gi6gL5QmoFXRSqv14cPoFCsGU/B8ILBJ+Y84EQQKKRiT+ZxQdSuInw4nHHSV9PseB8Kg==
+  dependencies:
+    prop-types "^15.5.10"
+    react-style-proptype "^3.0.0"
+
+react-native-vector-icons@^4.0.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
+  integrity sha512-rpfhfPiXCK2PX1nrNhdxSMrEGB/Gw/SvKoPM0G2wAkSoqynnes19K0VYI+Up7DqR1rFIpE4hP2erpT1tNx2tfg==
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.5.10"
+    yargs "^8.0.2"
+
 react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
@@ -5670,6 +5694,13 @@ react-refresh@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
   integrity sha512-kv5QlFFSZWo7OlJFNYbxRtY66JImuP2LcrFgyJfQaf85gSP+byzG21UbDQEYjU7f//ny8rwiEkO6py2Y+fEgAQ==
+
+react-style-proptype@^3.0.0:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-style-proptype/-/react-style-proptype-3.2.2.tgz#d8e998e62ce79ec35b087252b90f19f1c33968a0"
+  integrity sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==
+  dependencies:
+    prop-types "^15.5.4"
 
 react-test-renderer@16.9.0:
   version "16.9.0"
@@ -7174,6 +7205,25 @@ yargs@^13.2.2, yargs@^13.3.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
+
+yargs@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
+  integrity sha1-YpmpBVsc78lp/355wdkY3Osiw2A=
+  dependencies:
+    camelcase "^4.1.0"
+    cliui "^3.2.0"
+    decamelize "^1.1.1"
+    get-caller-file "^1.0.1"
+    os-locale "^2.0.0"
+    read-pkg-up "^2.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1"
+    yargs-parser "^7.0.0"
 
 yargs@^9.0.0:
   version "9.0.1"

@@ -24,7 +24,8 @@ export default function Home({navigation}) {
       <Container>
         <Header>
           <HelpIcon>
-            <Icon name={'help-circle'} size={40} color="white"></Icon>
+            <Icon onPress={() => navigation.navigate('Help')}
+              name={'help-circle'} size={40} color="white"/>
           </HelpIcon>
           <LogoText onPress={() => navigation.navigate('SignIn')}>SmartGuide</LogoText>
           <SettingsIcon>

@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
 import NewStand from './pages/NewStand';
 import ListStands from './pages/ListStands'
+import Help from './pages/Help'
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -15,5 +16,6 @@ export default createAppContainer(
     MyAccount,
     NewStand,
     ListStands
+    Help
   }),
 );
