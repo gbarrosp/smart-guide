@@ -39,7 +39,9 @@ export default function Home({navigation}) {
 
         <Footer>
           <ListIcon>
-            <Icon name={'list'} size={40} color="white"></Icon>
+            <Icon name={'list'} size={40} color="white"
+              onPress={() => navigation.navigate('ListStands')}
+            />
           </ListIcon>
           <AddItemIcon>
             <Icon name={'plus-circle'} size={40} color="white"
