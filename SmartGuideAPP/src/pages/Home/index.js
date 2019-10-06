@@ -28,7 +28,8 @@ export default function Home({navigation}) {
           </HelpIcon>
           <LogoText onPress={() => navigation.navigate('SignIn')}>SmartGuide</LogoText>
           <SettingsIcon>
-            <Icon name={'settings'} size={40} color="white"></Icon>
+            <Icon name={'settings'} size={40} color="white"
+              onPress={() => navigation.navigate('MyAccount')}/>
           </SettingsIcon>
         </Header>
 
