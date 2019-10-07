@@ -11,6 +11,7 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  DescriptionInput,
 } from './styles';
 
 export default function NewStand({navigation}) {
@@ -23,7 +24,7 @@ export default function NewStand({navigation}) {
 
         <Form>
           <FormInput
-            icon="user"
+            icon="map-pin"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Título da bancada"
@@ -34,32 +35,50 @@ export default function NewStand({navigation}) {
           />
 
 
-          <FormInput
-            icon="at-sign"
+          <DescriptionInput
+            icon="align-center"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Descrição"
             returnKeyType="next"
             onSubmitEditing={() => {
-              this.secondTextInput.focus();
+              inputs.thirdTextInput.focus();
+            }}
+            ref={input => {
+              inputs.secondTextInput = input;
             }}
           />
 
 
           <FormInput
-            icon="at-sign"
+            icon="image"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Foto"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              inputs.fourthTextInput.focus();
+            }}
+            ref={input => {
+              inputs.thirdTextInput = input;
+            }}
+          />
+
+
+          <FormInput
+            icon="users"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Público alvo"
             returnKeyType="next"
-            onSubmitEditing={() => {
-              this.secondTextInput.focus();
+            ref={input => {
+              inputs.fourthTextInput = input;
             }}
           />
 
 
           <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-            Salvar
+            Adicionar
           </SubmitButton>
         </Form>
 
