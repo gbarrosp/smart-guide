@@ -7,17 +7,23 @@ import Icon from 'react-native-vector-icons/Feather';
 import {
   Container,
   Header,
-  LogoText,
+  Title,
+  Text,
 } from './styles';
 
-export default function Home({navigation}) {
+export default function About({navigation}) {
 
   return (
     <BackgroundColor>
       <Container>
         <Header>
-          <LogoText onPress={() => navigation.navigate('Home')}>Ajuda</LogoText>
+          <Title onPress={() => navigation.navigate('Home')}>SmartGuide</Title>
         </Header>
+        <Title>Autores</Title>
+        <Text>
+          Gustavo Barros @gbarrosp
+          Eduardo Faria @zeduardo
+        </Text>
       </Container>
     </BackgroundColor>
   );

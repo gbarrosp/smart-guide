@@ -41,3 +41,8 @@ export const SignLinkText = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export const DescriptionInput = styled(Input)`
+  margin-bottom: 10px;
+  height: 200px;
+`;

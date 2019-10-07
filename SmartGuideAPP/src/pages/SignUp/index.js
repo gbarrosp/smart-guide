@@ -26,18 +26,20 @@ export default function SignUp({navigation}) {
             icon="user"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Nome completo"
+            placeholder="Nome de usuário"
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.secondTextInput.focus();
             }}
           />
 
+
           <FormInput
             icon="mail"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
+            keyboardType={'email-address'}
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.thirdTextInput.focus();
@@ -47,31 +49,11 @@ export default function SignUp({navigation}) {
             }}
           />
 
-          <FormInput
-            icon="user"
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Nome de usuário"
-            returnKeyType="next"
-            onSubmitEditing={() => {
-              this.secondTextInput.focus();
-            }}
-          />
 
           <FormInput
             icon="lock"
             secureTextEntry={true}
             placeholder="Sua senha secreta"
-            returnKeyType="go"
-            ref={input => {
-              inputs.thirdTextInput = input;
-            }}
-          />
-
-          <FormInput
-            icon="lock"
-            secureTextEntry={true}
-            placeholder="Confirme sua senha"
             returnKeyType="go"
             ref={input => {
               inputs.thirdTextInput = input;

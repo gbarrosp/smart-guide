@@ -13,7 +13,9 @@ import {
   LogoText,
   Scan,
   ListIcon,
-  AddItemIcon
+  AddItemIcon,
+  FooterItem,
+  InfoIcon,
 } from './styles';
 
 export default function Home({navigation}) {
@@ -39,16 +41,25 @@ export default function Home({navigation}) {
         </Scan>
 
         <Footer>
-          <ListIcon>
-            <Icon name={'list'} size={40} color="white"
-              onPress={() => navigation.navigate('ListStands')}
-            />
-          </ListIcon>
-          <AddItemIcon>
-            <Icon name={'plus-circle'} size={40} color="white"
-              onPress={() => navigation.navigate('NewStand')}
-            />
-          </AddItemIcon>
+          <FooterItem>
+            <InfoIcon>
+              <Icon name={'info'} size={40} color="white"
+                onPress={() => navigation.navigate('About')}
+              />
+            </InfoIcon>
+          </FooterItem>
+          <FooterItem>
+            <ListIcon>
+              <Icon name={'list'} size={40} color="white"
+                onPress={() => navigation.navigate('ListStands')}
+              />
+            </ListIcon>
+            <AddItemIcon>
+              <Icon name={'plus-circle'} size={40} color="white"
+                onPress={() => navigation.navigate('NewStand')}
+              />
+            </AddItemIcon>
+          </FooterItem>
         </Footer>
 
       </Container>

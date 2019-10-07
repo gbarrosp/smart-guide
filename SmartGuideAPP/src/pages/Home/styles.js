@@ -37,7 +37,7 @@ export const Header = styled.View`
 export const Footer = styled.View`
   height: 40px;
   flexDirection: row;
-  justifyContent: flex-end;
+  justifyContent: space-between;
   margin-bottom: 30px;
 `;
 
@@ -51,6 +51,10 @@ export const SettingsIcon = styled.View`
   width: 40px;
 `;
 
+export const FooterItem = styled.View`
+  flexDirection: row;
+`;
+
 export const ListIcon = styled.View`
   right: 0px;
   width: 40px;
@@ -58,5 +62,10 @@ export const ListIcon = styled.View`
 
 export const AddItemIcon = styled.View`
   margin-left: 10px;
+  width: 40px;
+`;
+
+export const InfoIcon = styled.View`
+  left: 0px;
   width: 40px;
 `;
