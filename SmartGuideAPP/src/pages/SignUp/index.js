@@ -39,6 +39,7 @@ export default function SignUp({navigation}) {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
+            keyboardType={'email-address'}
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.thirdTextInput.focus();

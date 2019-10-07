@@ -41,7 +41,10 @@ export default function MyAccount({navigation}) {
             placeholder="Usuário"
             returnKeyType="next"
             onSubmitEditing={() => {
-              this.secondTextInput.focus();
+              inputs.ThirdTextInput.focus();
+            }}
+            ref={input => {
+              inputs.secondTextInput = input;
             }}
           />
 
@@ -50,10 +53,14 @@ export default function MyAccount({navigation}) {
             icon="mail"
             autoCorrect={false}
             autoCapitalize="none"
+            keyboardType={'email-address'}
             placeholder="E-mail"
             returnKeyType="next"
             onSubmitEditing={() => {
-              this.secondTextInput.focus();
+              inputs.FourthTextInput.focus();
+            }}
+            ref={input => {
+              inputs.ThirdTextInput = input;
             }}
           />
 
@@ -62,14 +69,16 @@ export default function MyAccount({navigation}) {
             icon="smile"
             autoCorrect={false}
             autoCapitalize="none"
+            keyboardType={'numeric'}
             placeholder="Idade"
             returnKeyType="next"
             onSubmitEditing={() => {
-              inputs.thirdTextInput.focus();
+              inputs.FifthTextInput.focus();
             }}
             ref={input => {
-              inputs.secondTextInput = input;
+              inputs.FourthTextInput = input;
             }}
+
           />
 
 
@@ -78,12 +87,9 @@ export default function MyAccount({navigation}) {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Conhecimento"
-            returnKeyType="next"
-            onSubmitEditing={() => {
-              inputs.thirdTextInput.focus();
-            }}
+            returnKeyType="go"
             ref={input => {
-              inputs.secondTextInput = input;
+              inputs.FifthTextInput = input;
             }}
           />
 
