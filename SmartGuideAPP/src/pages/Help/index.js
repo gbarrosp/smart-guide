@@ -16,7 +16,7 @@ export default function Home({navigation}) {
     <BackgroundColor>
       <Container>
         <Header>
-          <LogoText onPress={() => navigation.navigate('SignIn')}>Ajuda</LogoText>
+          <LogoText onPress={() => navigation.navigate('Home')}>Ajuda</LogoText>
         </Header>
       </Container>
     </BackgroundColor>
