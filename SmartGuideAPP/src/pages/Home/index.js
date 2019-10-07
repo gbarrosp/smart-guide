@@ -13,7 +13,9 @@ import {
   LogoText,
   Scan,
   ListIcon,
-  AddItemIcon
+  AddItemIcon,
+  FooterItem,
+  InfoIcon,
 } from './styles';
 
 export default function Home({navigation}) {
@@ -24,11 +26,13 @@ export default function Home({navigation}) {
       <Container>
         <Header>
           <HelpIcon>
-            <Icon name={'help-circle'} size={40} color="white"></Icon>
+            <Icon onPress={() => navigation.navigate('Help')}
+              name={'help-circle'} size={40} color="white"/>
           </HelpIcon>
           <LogoText onPress={() => navigation.navigate('SignIn')}>SmartGuide</LogoText>
           <SettingsIcon>
-            <Icon name={'settings'} size={40} color="white"></Icon>
+            <Icon name={'settings'} size={40} color="white"
+              onPress={() => navigation.navigate('MyAccount')}/>
           </SettingsIcon>
         </Header>
 
@@ -37,12 +41,25 @@ export default function Home({navigation}) {
         </Scan>
 
         <Footer>
-          <ListIcon>
-            <Icon name={'list'} size={40} color="white"></Icon>
-          </ListIcon>
-          <AddItemIcon>
-            <Icon name={'plus-circle'} size={40} color="white"></Icon>
-          </AddItemIcon>
+          <FooterItem>
+            <InfoIcon>
+              <Icon name={'info'} size={40} color="white"
+                onPress={() => navigation.navigate('About')}
+              />
+            </InfoIcon>
+          </FooterItem>
+          <FooterItem>
+            <ListIcon>
+              <Icon name={'list'} size={40} color="white"
+                onPress={() => navigation.navigate('ListStands')}
+              />
+            </ListIcon>
+            <AddItemIcon>
+              <Icon name={'plus-circle'} size={40} color="white"
+                onPress={() => navigation.navigate('NewStand')}
+              />
+            </AddItemIcon>
+          </FooterItem>
         </Footer>
 
       </Container>

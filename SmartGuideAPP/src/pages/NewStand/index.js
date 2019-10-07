@@ -11,9 +11,10 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  DescriptionInput,
 } from './styles';
 
-export default function SignUp({navigation}) {
+export default function NewStand({navigation}) {
   let inputs = {};
 
   return (
@@ -23,10 +24,10 @@ export default function SignUp({navigation}) {
 
         <Form>
           <FormInput
-            icon="user"
+            icon="map-pin"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Nome de usuário"
+            placeholder="Título da bancada"
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.secondTextInput.focus();
@@ -34,12 +35,11 @@ export default function SignUp({navigation}) {
           />
 
 
-          <FormInput
-            icon="mail"
+          <DescriptionInput
+            icon="align-center"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite seu e-mail"
-            keyboardType={'email-address'}
+            placeholder="Descrição"
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.thirdTextInput.focus();
@@ -51,21 +51,38 @@ export default function SignUp({navigation}) {
 
 
           <FormInput
-            icon="lock"
-            secureTextEntry={true}
-            placeholder="Sua senha secreta"
-            returnKeyType="go"
+            icon="image"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Foto"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              inputs.fourthTextInput.focus();
+            }}
             ref={input => {
               inputs.thirdTextInput = input;
             }}
           />
 
+
+          <FormInput
+            icon="users"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Público alvo"
+            returnKeyType="next"
+            ref={input => {
+              inputs.fourthTextInput = input;
+            }}
+          />
+
+
           <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-            Cadastrar
+            Adicionar
           </SubmitButton>
         </Form>
 
-        <SignLink onPress={() => navigation.navigate('SignIn')}>
+        <SignLink onPress={() => navigation.navigate('Home')}>
           <SignLinkText>Voltar</SignLinkText>
         </SignLink>
       </Container>

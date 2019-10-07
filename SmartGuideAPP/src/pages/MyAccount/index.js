@@ -13,7 +13,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default function SignUp({navigation}) {
+export default function MyAccount({navigation}) {
   let inputs = {};
 
   return (
@@ -26,7 +26,7 @@ export default function SignUp({navigation}) {
             icon="user"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Nome de usuário"
+            placeholder="Nome"
             returnKeyType="next"
             onSubmitEditing={() => {
               inputs.secondTextInput.focus();
@@ -35,14 +35,13 @@ export default function SignUp({navigation}) {
 
 
           <FormInput
-            icon="mail"
+            icon="at-sign"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite seu e-mail"
-            keyboardType={'email-address'}
+            placeholder="Usuário"
             returnKeyType="next"
             onSubmitEditing={() => {
-              inputs.thirdTextInput.focus();
+              inputs.ThirdTextInput.focus();
             }}
             ref={input => {
               inputs.secondTextInput = input;
@@ -51,21 +50,56 @@ export default function SignUp({navigation}) {
 
 
           <FormInput
-            icon="lock"
-            secureTextEntry={true}
-            placeholder="Sua senha secreta"
-            returnKeyType="go"
+            icon="mail"
+            autoCorrect={false}
+            autoCapitalize="none"
+            keyboardType={'email-address'}
+            placeholder="E-mail"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              inputs.FourthTextInput.focus();
+            }}
             ref={input => {
-              inputs.thirdTextInput = input;
+              inputs.ThirdTextInput = input;
             }}
           />
 
+
+          <FormInput
+            icon="smile"
+            autoCorrect={false}
+            autoCapitalize="none"
+            keyboardType={'numeric'}
+            placeholder="Idade"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              inputs.FifthTextInput.focus();
+            }}
+            ref={input => {
+              inputs.FourthTextInput = input;
+            }}
+
+          />
+
+
+          <FormInput
+            icon="bookmark"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Conhecimento"
+            returnKeyType="go"
+            ref={input => {
+              inputs.FifthTextInput = input;
+            }}
+          />
+
+
           <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-            Cadastrar
+            Salvar
           </SubmitButton>
         </Form>
 
-        <SignLink onPress={() => navigation.navigate('SignIn')}>
+        <SignLink onPress={() => navigation.navigate('Home')}>
           <SignLinkText>Voltar</SignLinkText>
         </SignLink>
       </Container>
