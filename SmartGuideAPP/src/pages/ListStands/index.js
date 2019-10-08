@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import logoImage from '~/assets/stemi_P.png';
 import BackgroundColor from '~/components/Background';
@@ -15,6 +16,7 @@ import {
   StandContainer,
   Header,
   TextContainer,
+  TitleContainer,
 } from './styles';
 
 export default function NewStand({navigation}) {
@@ -34,9 +36,13 @@ export default function NewStand({navigation}) {
           renderItem={({item}) => 
             <StandContainer>
               <TextContainer>
-                <StandTitle>
-                  {item.key}
-                </StandTitle>
+                <TitleContainer>
+                  <StandTitle>
+                    {item.key}
+                  </StandTitle>
+                  <Icon onPress={() => navigation.navigate('Help')}
+                      name={'edit'} size={30} color="white"/>
+                </TitleContainer>
                 <StandDescription>
                   {item.description}
                 </StandDescription>

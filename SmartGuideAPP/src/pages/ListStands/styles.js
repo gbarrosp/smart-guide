@@ -35,6 +35,11 @@ export const StandTitle = styled.Text`
   font-size: 24px;
 `;
 
+export const TitleContainer = styled.View`
+  justifyContent: space-between;
+  flexDirection: row;
+`;
+
 export const StandDescription = styled.Text`
   color: #FFF;
   font-size: 18px;
