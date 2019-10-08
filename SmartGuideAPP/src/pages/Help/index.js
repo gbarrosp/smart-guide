@@ -22,7 +22,7 @@ import {
 export default function NewStand({navigation}) {
 
   let stands = [
-    {key: 'Camêra não abre', description: 'Para reiniciar a camêra verifique se não existe nenhum outro app que está também utiliza camêra'},
+    {key: 'Camêra não abre', description: 'Para reiniciar a camêra verifique se não existe nenhum outro app que também utiliza a câmera'},
     {key: 'O que é conhecimento?', description: 'SmartGuide exibe a melhor descrição da exposição para você. Por isso é importante sabermos o seu nível de conhecimento'},
   ]
   return (

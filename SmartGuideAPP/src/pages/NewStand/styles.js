@@ -15,13 +15,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const Image = styled.Image`
-  width: 120;
-  height: 120;
+  width: 180;
+  height: 180;
 `;
 
 export const Form = styled.View`
   align-self: stretch;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 export const FormInput = styled(Input)`
