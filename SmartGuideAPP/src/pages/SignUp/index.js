@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import logoImage from '~/assets/logo.png';
+import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/Background';
 
 import {
@@ -11,6 +11,7 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  LogoText,
 } from './styles';
 
 export default function SignUp({navigation}) {
@@ -20,6 +21,7 @@ export default function SignUp({navigation}) {
     <BackgroundColor>
       <Container>
         <Image source={logoImage} />
+        <LogoText>SmartGuide</LogoText>
 
         <Form>
           <FormInput

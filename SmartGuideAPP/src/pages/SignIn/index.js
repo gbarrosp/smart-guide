@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 
-// import bgImage from '~/assets/background.jpg';
-import logoImage from '~/assets/logo.png';
+import bgImage from '~/assets/background.jpg';
+import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/Background';
 
 import {
@@ -13,6 +13,7 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  LogoText,
 } from './styles';
 
 export default class SignIn extends Component {
@@ -34,11 +35,11 @@ export default class SignIn extends Component {
     const {navigation} = this.props;
 
     return (
-      <BackgroundColor>
+      <BackgroundColor source={bgImage}>
         {/* <ImageBackground source={bgImage} style={styles.backgroundContainer}> */}
         <Container>
           <Image source={logoImage} />
-
+          <LogoText>SmartGuide</LogoText>
           <Form>
             <FormInput
               icon="user"

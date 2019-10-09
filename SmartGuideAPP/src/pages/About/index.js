@@ -22,6 +22,8 @@ export default function About({navigation}) {
         <Title>Autores</Title>
         <Text>
           Gustavo Barros @gbarrosp
+        </Text>
+        <Text>
           Eduardo Faria @zeduardo
         </Text>
       </Container>

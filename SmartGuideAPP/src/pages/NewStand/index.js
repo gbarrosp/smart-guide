@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import logoImage from '~/assets/logo.png';
+import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/Background';
 
 import {
