@@ -1,8 +1,8 @@
-import LinearGradient from 'react-native-linear-gradient';
-import styled from 'styled-components/native';
+import React from 'react';
 
-export default styled(LinearGradient).attrs({
-  colors: ['#072f5f', '#072f5f'],
-})`
-  flex: 1;
-`;
+import {ImageBackground} from './styles';
+import bgImage from '~/assets/background.jpg';
+
+export default function Background({children}) {
+  return <ImageBackground source={bgImage}>{children}</ImageBackground>;
+}
