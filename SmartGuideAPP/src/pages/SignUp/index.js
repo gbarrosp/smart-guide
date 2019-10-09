@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import DismissKeyboard from '~/components/DismissKeyboard';
 import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/Background';
 
@@ -34,57 +35,59 @@ export default class SignUp extends Component {
 
     return (
       <BackgroundColor>
-        <Container>
-          <Image source={logoImage} />
-          <LogoText>SmartGuide</LogoText>
+        <DismissKeyboard>
+          <Container>
+            <Image source={logoImage} />
+            <LogoText>SmartGuide</LogoText>
 
-          <Form>
-            <FormInput
-              icon="user"
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Nome de usuário"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                this.props.secondTextInput.focus();
-              }}
-            />
+            <Form>
+              <FormInput
+                icon="user"
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Nome de usuário"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.props.secondTextInput.focus();
+                }}
+              />
 
-            <FormInput
-              icon="mail"
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Digite seu e-mail"
-              keyboardType={'email-address'}
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                this.props.thirdTextInput.focus();
-              }}
-              ref={input => {
-                this.props.secondTextInput = input;
-              }}
-            />
+              <FormInput
+                icon="mail"
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Digite seu e-mail"
+                keyboardType={'email-address'}
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.props.thirdTextInput.focus();
+                }}
+                ref={input => {
+                  this.props.secondTextInput = input;
+                }}
+              />
 
-            <FormInput
-              icon="lock"
-              onShowPass={this.showPass}
-              secureTextEntry={this.state.showPass}
-              placeholder="Sua senha secreta"
-              returnKeyType="go"
-              ref={input => {
-                this.props.thirdTextInput = input;
-              }}
-            />
+              <FormInput
+                icon="lock"
+                onShowPass={this.showPass}
+                secureTextEntry={this.state.showPass}
+                placeholder="Sua senha secreta"
+                returnKeyType="go"
+                ref={input => {
+                  this.props.thirdTextInput = input;
+                }}
+              />
 
-            <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-              Cadastrar
-            </SubmitButton>
-          </Form>
+              <SubmitButton onPress={() => navigation.navigate('SignUp')}>
+                Cadastrar
+              </SubmitButton>
+            </Form>
 
-          <SignLink onPress={() => navigation.navigate('SignIn')}>
-            <SignLinkText>Voltar</SignLinkText>
-          </SignLink>
-        </Container>
+            <SignLink onPress={() => navigation.navigate('SignIn')}>
+              <SignLinkText>Voltar</SignLinkText>
+            </SignLink>
+          </Container>
+        </DismissKeyboard>
       </BackgroundColor>
     );
   }
