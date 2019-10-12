@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 
 import logoImage from '~/assets/stemi_GG.png';
-import BackgroundColor from '~/components/Background';
+import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
 
 import {

@@ -43,7 +43,7 @@ export const SignLinkText = styled.Text`
 `;
 
 export const LogoText = styled.Text`
-  color : white;
+  color: white;
   font-weight: bold;
   font-size: 40px;
 `;

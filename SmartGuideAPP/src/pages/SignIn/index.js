@@ -3,7 +3,8 @@ import {StyleSheet} from 'react-native';
 
 import bgImage from '~/assets/background.jpg';
 import logoImage from '~/assets/stemi_GG.png';
-import BackgroundColor from '~/components/Background';
+import BackgroundColor from '~/components/BackgroundImage';
+// import BackgroundColor from '~/components/Background';
 import DismissKeyboard from '~/components/DismissKeyboard';
 
 import {
