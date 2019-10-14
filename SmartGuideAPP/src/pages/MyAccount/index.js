@@ -4,16 +4,9 @@ import {ScrollView} from 'react-native';
 import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
+import Header from '~/components/Header';
 
-import {
-  Container,
-  Image,
-  Form,
-  FormInput,
-  SubmitButton,
-  SignLink,
-  SignLinkText,
-} from './styles';
+import {Container, Image, Form, FormInput, SubmitButton} from './styles';
 
 export default function MyAccount({navigation}) {
   let inputs = {};
@@ -23,6 +16,12 @@ export default function MyAccount({navigation}) {
       <BackgroundColor>
         <DismissKeyboard>
           <Container>
+            <Header
+              title="Minha conta"
+              to="Home"
+              navigation={navigation}
+              size="medium"
+            />
             <Image source={logoImage} />
 
             <Form>
@@ -96,10 +95,6 @@ export default function MyAccount({navigation}) {
                 Salvar
               </SubmitButton>
             </Form>
-
-            <SignLink onPress={() => navigation.navigate('Home')}>
-              <SignLinkText>Voltar</SignLinkText>
-            </SignLink>
           </Container>
         </DismissKeyboard>
       </BackgroundColor>

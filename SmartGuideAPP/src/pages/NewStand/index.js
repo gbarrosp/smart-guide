@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native';
 import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
+import Header from '~/components/Header';
 
 import {
   Container,
@@ -24,6 +25,12 @@ export default function NewStand({navigation}) {
       <BackgroundColor>
         <DismissKeyboard>
           <Container>
+            <Header
+              title="Novo estande"
+              to="Home"
+              navigation={navigation}
+              size="medium"
+            />
             <Image source={logoImage} />
 
             <Form>
@@ -81,10 +88,6 @@ export default function NewStand({navigation}) {
                 Adicionar
               </SubmitButton>
             </Form>
-
-            <SignLink onPress={() => navigation.navigate('Home')}>
-              <SignLinkText>Voltar</SignLinkText>
-            </SignLink>
           </Container>
         </DismissKeyboard>
       </BackgroundColor>

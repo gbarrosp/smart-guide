@@ -9,18 +9,17 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
+  padding: 30px 30px;
 `;
 
 export const Image = styled.Image`
-  width: 180;
-  height: 180;
+  width: 120;
+  height: 120;
+  align-self: center;
 `;
 
 export const Form = styled.View`
-  align-self: stretch;
+  /* align-self: stretch; */
   margin-top: 30px;
 `;
 

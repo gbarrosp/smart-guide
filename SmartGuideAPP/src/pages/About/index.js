@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
+import {TouchableOpacity} from 'react-native';
 
-import logoImage from '~/assets/logo.png';
 import BackgroundColor from '~/components/BackgroundImage';
-import Icon from 'react-native-vector-icons/Feather';
+import Header from '~/components/Header';
 
-import {Container, Header, Title, Text} from './styles';
+import {Container, Title, Text} from './styles';
 
 export default function About({navigation}) {
   return (
     <BackgroundColor>
       <Container>
-        <Header>
-          <Title onPress={() => navigation.navigate('Home')}>SmartGuide</Title>
-        </Header>
-        <Title>Autores</Title>
+        <Header title="Sobre" to="Home" navigation={navigation} />
+        <Text>Autores</Text>
         <Text>Gustavo Barros @gbarrosp</Text>
         <Text>Eduardo Faria @zeduardo</Text>
       </Container>

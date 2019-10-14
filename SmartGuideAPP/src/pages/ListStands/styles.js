@@ -1,17 +1,12 @@
 import {Platform} from 'react-native';
 import styled from 'styled-components';
 
-import Input from '~/components/Input';
-import Button from '~/components/Button';
-
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
 })`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 30px;
+  padding: 30px 30px;
 `;
 
 export const Image = styled.Image`
@@ -36,12 +31,12 @@ export const StandTitle = styled.Text`
 `;
 
 export const TitleContainer = styled.View`
-  justifyContent: space-between;
-  flexDirection: row;
+  justify-content: space-between;
+  flex-direction: row;
 `;
 
 export const StandDescription = styled.Text`
-  color: #FFF;
+  color: #fff;
   font-size: 18px;
   text-align: justify;
 `;
@@ -65,9 +60,9 @@ export const ScreenTitle = styled.Text`
 `;
 
 export const Header = styled.View`
-  flexDirection: row;
+  flex-direction: row;
   height: 40px;
-  justifyContent: center;
-  margin-bottom:10px;
+  justify-content: center;
+  margin-bottom: 10px;
   margin-top: 10px;
 `;

@@ -7,11 +7,11 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 })`
   flex: 1;
   padding: 30px 30px;
-  justifyContent: space-between;
+  justify-content: space-between;
 `;
 
 export const Scan = styled.View`
-  justifyContent: center;
+  justify-content: center;
   align-items: center;
   margin: 60px;
 `;
@@ -28,16 +28,16 @@ export const LogoText = styled.Text`
 `;
 
 export const Header = styled.View`
-  flexDirection: row;
+  flex-direction: row;
   height: 40px;
-  justifyContent: space-between;
-  margin-bottom:10px;
+  justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 export const Footer = styled.View`
   height: 40px;
-  flexDirection: row;
-  justifyContent: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 30px;
 `;
 
@@ -52,7 +52,7 @@ export const SettingsIcon = styled.View`
 `;
 
 export const FooterItem = styled.View`
-  flexDirection: row;
+  flex-direction: row;
 `;
 
 export const ListIcon = styled.View`

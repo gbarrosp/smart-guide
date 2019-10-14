@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import logoImage from '~/assets/stemi_P.png';
 import BackgroundColor from '~/components/BackgroundImage';
+import Header from '~/components/Header';
 
 import {
   Container,
@@ -14,7 +15,6 @@ import {
   StandTitle,
   StandDescription,
   StandContainer,
-  Header,
   TextContainer,
   TitleContainer,
 } from './styles';
@@ -35,11 +35,7 @@ export default function NewStand({navigation}) {
   return (
     <BackgroundColor>
       <Container>
-        <Header>
-          <ScreenTitle onPress={() => navigation.navigate('Home')}>
-            Ajuda
-          </ScreenTitle>
-        </Header>
+        <Header title="Ajuda" to="Home" navigation={navigation} />
         <FlatList
           data={stands}
           renderItem={({item}) => (
@@ -53,10 +49,6 @@ export default function NewStand({navigation}) {
             </StandContainer>
           )}
         />
-
-        <SignLink onPress={() => navigation.navigate('Home')}>
-          <SignLinkText>Voltar</SignLinkText>
-        </SignLink>
       </Container>
     </BackgroundColor>
   );
