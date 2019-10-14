@@ -21,12 +21,12 @@ export default function NewStand({navigation}) {
   let inputs = {};
 
   return (
-    <ScrollView>
-      <BackgroundColor>
+    <BackgroundColor>
+      <ScrollView>
         <DismissKeyboard>
           <Container>
             <Header
-              title="Novo estande"
+              title="Adicionar Bancada"
               to="Home"
               navigation={navigation}
               size="medium"
@@ -90,7 +90,7 @@ export default function NewStand({navigation}) {
             </Form>
           </Container>
         </DismissKeyboard>
-      </BackgroundColor>
-    </ScrollView>
+      </ScrollView>
+    </BackgroundColor>
   );
 }

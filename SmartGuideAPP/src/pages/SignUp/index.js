@@ -48,7 +48,7 @@ export default class SignUp extends Component {
                 placeholder="Nome de usuário"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  this.props.secondTextInput.focus();
+                  this.secondTextInput.focus();
                 }}
               />
 
@@ -60,10 +60,10 @@ export default class SignUp extends Component {
                 keyboardType={'email-address'}
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  this.props.thirdTextInput.focus();
+                  this.thirdTextInput.focus();
                 }}
                 ref={input => {
-                  this.props.secondTextInput = input;
+                  this.secondTextInput = input;
                 }}
               />
 
@@ -74,7 +74,7 @@ export default class SignUp extends Component {
                 placeholder="Sua senha secreta"
                 returnKeyType="go"
                 ref={input => {
-                  this.props.thirdTextInput = input;
+                  this.thirdTextInput = input;
                 }}
               />
 
