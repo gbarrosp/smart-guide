@@ -1,10 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
 
 import './config/StatusBarConfig';
 
-import Routes from './routes';
+import App from './App';
 
-export default function App() {
-  return <Routes />;
+export default function Index() {
+  return <App />;
 }

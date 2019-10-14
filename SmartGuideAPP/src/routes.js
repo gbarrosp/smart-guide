@@ -1,4 +1,8 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createStackNavigator,
+} from 'react-navigation';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -9,15 +13,25 @@ import ListStands from './pages/ListStands';
 import Help from './pages/Help';
 import About from './pages/About';
 
-export default createAppContainer(
-  createSwitchNavigator({
-    SignIn,
-    SignUp,
-    Home,
-    MyAccount,
-    NewStand,
-    ListStands,
-    Help,
-    About,
-  }),
-);
+export default (isSigned = false) =>
+  createAppContainer(
+    createSwitchNavigator(
+      {
+        Sign: createSwitchNavigator({
+          SignIn,
+          SignUp,
+        }),
+        App: createSwitchNavigator({
+          Home,
+          MyAccount,
+          NewStand,
+          ListStands,
+          Help,
+          About,
+        }),
+      },
+      {
+        initialRouteName: isSigned ? 'App' : 'Sign',
+      },
+    ),
+  );

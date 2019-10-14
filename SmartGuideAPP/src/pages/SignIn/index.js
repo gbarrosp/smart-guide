@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 
-// import bgImage from '~/assets/background.jpg';
-import logoImage from '~/assets/logo.png';
-import BackgroundColor from '~/components/Background';
+import bgImage from '~/assets/background.jpg';
+import logoImage from '~/assets/stemi_GG.png';
+import BackgroundColor from '~/components/BackgroundImage';
+// import BackgroundColor from '~/components/Background';
+import DismissKeyboard from '~/components/DismissKeyboard';
 
 import {
   Container,
@@ -13,6 +15,7 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  LogoText,
 } from './styles';
 
 export default class SignIn extends Component {
@@ -34,44 +37,48 @@ export default class SignIn extends Component {
     const {navigation} = this.props;
 
     return (
-      <BackgroundColor>
+      <BackgroundColor source={bgImage}>
+        <DismissKeyboard>
+          <Container>
+            <Image source={logoImage} />
+            <LogoText>SmartGuide</LogoText>
+            <Form>
+              <FormInput
+                icon="user"
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Usuário"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.secondTextInput.focus();
+                }}
+              />
+
+              <FormInput
+                icon="lock"
+                onShowPass={this.showPass}
+                secureTextEntry={this.state.showPass}
+                placeholder="Senha"
+                returnKeyType="go"
+                ref={input => {
+                  this.secondTextInput = input;
+                }}
+              />
+
+              <SubmitButton onPress={() => navigation.navigate('Home')}>
+                Entrar
+              </SubmitButton>
+              <SubmitButton onPress={() => navigation.navigate('SignUp')}>
+                Cadastrar
+              </SubmitButton>
+            </Form>
+
+            <SignLink onPress={() => navigation.navigate('SignUp')}>
+              <SignLinkText>Esqueci minha senha</SignLinkText>
+            </SignLink>
+          </Container>
+        </DismissKeyboard>
         {/* <ImageBackground source={bgImage} style={styles.backgroundContainer}> */}
-        <Container>
-          <Image source={logoImage} />
-
-          <Form>
-            <FormInput
-              icon="user"
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Usuário"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                this.secondTextInput.focus();
-              }}
-            />
-
-            <FormInput
-              icon="lock"
-              onShowPass={this.showPass}
-              secureTextEntry={this.state.showPass}
-              placeholder="Senha"
-              returnKeyType="go"
-              ref={input => {
-                this.secondTextInput = input;
-              }}
-            />
-
-            <SubmitButton onPress={() => navigation.navigate('Home')}>Entrar</SubmitButton>
-            <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-              Cadastrar
-            </SubmitButton>
-          </Form>
-
-          <SignLink onPress={() => navigation.navigate('SignUp')}>
-            <SignLinkText>Esqueci minha senha</SignLinkText>
-          </SignLink>
-        </Container>
       </BackgroundColor>
     );
   }

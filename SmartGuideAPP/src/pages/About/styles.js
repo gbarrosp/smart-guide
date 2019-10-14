@@ -12,18 +12,12 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 export const Title = styled.Text`
   color: #fff;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
+  align-self: center;
+  margin: 10px 0px 30px 0px;
 `;
 
 export const Text = styled.Text`
   color: #fff;
   font-size: 20px;
 `;
-
-export const Header = styled.View`
-  flexDirection: row;
-  height: 40px;
-  justifyContent: center;
-  margin-bottom:10px;
-`;
-
