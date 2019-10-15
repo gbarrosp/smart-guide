@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://swapi.co/api/',
+  baseURL: 'localhost:8000/api/',
 });
 
 export default api;

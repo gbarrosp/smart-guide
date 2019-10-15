@@ -31,8 +31,10 @@ export default class ListStands extends Component {
 
   getQuestions = async () => {
     try {
-      const response = await api.get('people');
-      console.log('response', response);
+      const response = await api.get('questions/',  {
+        crossDomain: true
+    });
+      console.log('API Response: ', response);
       // this.setState({stands: response});
     } catch (err) {
       console.log('err', err);
