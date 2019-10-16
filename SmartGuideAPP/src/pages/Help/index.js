@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
+import api from '../../services/api';
 import logoImage from '~/assets/stemi_P.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import Header from '~/components/Header';
