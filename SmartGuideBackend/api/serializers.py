@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Question
+from .models import Question, Profile, Stand, StandDescription
 
 class CreateUserSerializer(serializers.ModelSerializer):
     username = serializers.CharField()
@@ -23,4 +23,23 @@ class QuestionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Question
+        fields = '__all__'
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+class StandSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Stand
+        fields = '__all__'
+
+class StandDescriptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = StandDescription
         fields = '__all__'
