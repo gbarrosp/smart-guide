@@ -11,6 +11,7 @@ import {
   Image,
   Form,
   FormInput,
+  FormTextArea,
   SubmitButton,
   SignLink,
   SignLinkText,
@@ -29,7 +30,7 @@ export default function NewStand({navigation}) {
               title="Adicionar Bancada"
               to="Home"
               navigation={navigation}
-              size="medium"
+              size="big"
             />
             <Image source={logoImage} />
 
@@ -37,6 +38,7 @@ export default function NewStand({navigation}) {
               <FormInput
                 icon="map-pin"
                 autoCorrect={false}
+                blurOnSubmit={false}
                 autoCapitalize="none"
                 placeholder="Título da bancada"
                 returnKeyType="next"
@@ -45,9 +47,10 @@ export default function NewStand({navigation}) {
                 }}
               />
 
-              <DescriptionInput
+              <FormTextArea
                 icon="align-center"
                 autoCorrect={false}
+                blurOnSubmit={false}
                 autoCapitalize="none"
                 placeholder="Descrição"
                 returnKeyType="next"
@@ -57,12 +60,15 @@ export default function NewStand({navigation}) {
                 ref={input => {
                   inputs.secondTextInput = input;
                 }}
+                multiline={true}
+                numberOfLines={10}
               />
 
               <FormInput
                 icon="image"
                 autoCorrect={false}
                 autoCapitalize="none"
+                blurOnSubmit={false}
                 placeholder="Foto"
                 returnKeyType="next"
                 onSubmitEditing={() => {

@@ -43,6 +43,7 @@ export default class SignUp extends Component {
             <Form>
               <FormInput
                 icon="user"
+                blurOnSubmit={false}
                 autoCorrect={false}
                 autoCapitalize="none"
                 placeholder="Nome de usuário"
@@ -55,6 +56,7 @@ export default class SignUp extends Component {
               <FormInput
                 icon="mail"
                 autoCorrect={false}
+                blurOnSubmit={false}
                 autoCapitalize="none"
                 placeholder="Digite seu e-mail"
                 keyboardType={'email-address'}
