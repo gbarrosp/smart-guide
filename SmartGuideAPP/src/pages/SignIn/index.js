@@ -49,6 +49,7 @@ export default class SignIn extends Component {
                 autoCapitalize="none"
                 placeholder="Usuário"
                 returnKeyType="next"
+                blurOnSubmit={false}
                 onSubmitEditing={() => {
                   this.secondTextInput.focus();
                 }}

@@ -2,9 +2,12 @@ import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {Container, TInput, TouchableOpacity} from './styles';
+import {Container, TInput, TArea, TouchableOpacity} from './styles';
 
-function Input({style, icon, secureTextEntry, onShowPass, ...rest}, ref) {
+function Input(
+  {style, icon, secureTextEntry, onShowPass, multiline, ...rest},
+  ref,
+) {
   return (
     <Container style={style}>
       {icon && <Icon name={icon} size={20} color="rgba(255, 255, 255, 0.6)" />}
