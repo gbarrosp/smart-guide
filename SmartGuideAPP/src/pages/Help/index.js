@@ -20,37 +20,73 @@ import {
   TitleContainer,
 } from './styles';
 
-export default function NewStand({navigation}) {
-  let stands = [
-    {
-      key: 'Camêra não abre',
-      description:
-        'Para reiniciar a camêra verifique se não existe nenhum outro app que também utiliza a câmera',
-    },
-    {
-      key: 'O que é conhecimento?',
-      description:
-        'SmartGuide exibe a melhor descrição da exposição para você. Por isso é importante sabermos o seu nível de conhecimento',
-    },
-  ];
-  return (
-    <BackgroundColor>
-      <Container>
-        <Header title="Ajuda" to="Home" navigation={navigation} />
-        <FlatList
-          data={stands}
-          renderItem={({item}) => (
-            <StandContainer>
-              <TextContainer>
-                <TitleContainer>
-                  <StandTitle>{item.key}</StandTitle>
-                </TitleContainer>
-                <StandDescription>{item.description}</StandDescription>
-              </TextContainer>
-            </StandContainer>
-          )}
-        />
-      </Container>
-    </BackgroundColor>
-  );
+export default class NewStand extends Component {
+  // _isMounted = false;
+  constructor(props){
+    super(props)
+    // console.log('State set, is mounted?', this._isMounted)
+    this.state = {
+      stands: []
+    };
+  }
+
+  loadQuestions = () => {
+    api.get('questions/', {
+      headers: {
+        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+      }
+    }).then(result => {
+      console.log(result.data);
+      this.setState({stands: result.data});
+    });
+  }
+
+  componentDidMount() {
+    // this._isMounted = true;
+    // console.log('My Turn, is mount?', this._isMounted)
+    // api.get('questions/', {
+    //   headers: {
+    //     Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+    //   }
+    // }).then(result => {
+    //   console.log(result.data);
+      // console.log('Monted now?', this._isMounted)
+      // if (this._isMounted) {
+      //   console.log('Is mounted')
+        // this.setState({stands: result.data});
+      // }
+    // });
+    this.loadQuestions();
+  };
+
+  // componentWillUnmount() {
+  //   console.log('L51')
+  //   this._isMounted = false;
+  // }
+
+  render() {
+    const {navigation} = this.props;
+    const {stands} = this.state;
+    console.log('Rendered!')
+    return(
+      <BackgroundColor>
+        <Container>
+          <Header title="Ajuda" to="Home" navigation={navigation.navigate('Home')} />
+          <FlatList
+            data={stands}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <StandContainer>
+                <TextContainer>
+                  <TitleContainer>
+                    <StandTitle>{item.title}</StandTitle>
+                  </TitleContainer>
+                  <StandDescription>{item.answer}</StandDescription>
+                </TextContainer>
+              </StandContainer>
+            )}
+          />
+        </Container>
+      </BackgroundColor>
+    )};
 }
