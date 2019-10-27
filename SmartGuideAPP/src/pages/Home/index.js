@@ -104,7 +104,7 @@ export default class Home extends Component {
           <Scan>
             <Icon name={'camera'} size={150} color="white"
               onPress={() => this.onOpneScanner()}></Icon>
-            <CameraKitCameraScreen
+            {/* <CameraKitCameraScreen
               showFrame={false}
               //Show/hide scan frame
               scanBarcode={true}
@@ -118,7 +118,7 @@ export default class Home extends Component {
               onReadCode={event =>
                 this.onBarcodeScan(event.nativeEvent.codeStringValue)
               }
-            />
+            /> */}
           </Scan>
 
           <Footer>
