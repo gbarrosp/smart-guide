@@ -5,99 +5,62 @@ import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
 import Header from '~/components/Header';
+import api from '../../services/api';
 
 import {
   Container,
-  Image,
-  Form,
-  FormInput,
-  FormTextArea,
-  SubmitButton,
-  SignLink,
-  SignLinkText,
-  DescriptionInput,
+  DescriptionText
 } from './styles';
 
-export default function StandPlayer({navigation}) {
-  let inputs = {};
-  console.log(global.current_stand)
+export default class StandPlayer extends Component{
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      description: '',
+      stand_id: global.current_stand,
+    };
+  }
 
-  return (
-    <BackgroundColor>
-      <ScrollView>
-        <DismissKeyboard>
-          <Container>
-            <Header
-              title="Adicionar Bancada"
-              to="Home"
-              navigation={navigation}
-              size="big"
-            />
-            <Image source={logoImage} />
+  componentDidMount(){
+    api.get(`stands/${this.state.stand_id}/`, {
+      headers: {
+        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+      }
+    }).then(result => {
+        this.setState({title: result.data.name});
+    });
+    api.get(`descriptions/${this.state.stand_id}/${global.user_knowledge}`, {
+      headers: {
+        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+      }
+    }).then(result => {
+        this.setState({description: result.data.description});
+    });
+  }
 
-            <Form>
-              <FormInput
-                icon="map-pin"
-                autoCorrect={false}
-                blurOnSubmit={false}
-                autoCapitalize="none"
-                placeholder="Título da bancada"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  inputs.secondTextInput.focus();
-                }}
+  render(){
+    const {navigation} = this.props;
+    const {title, description} = this.state;
+
+    return (
+      <BackgroundColor>
+        <ScrollView>
+          <DismissKeyboard>
+            <Container>
+              <Header
+                title={title}
+                to="Home"
+                navigation={navigation}
+                size="big"
               />
-
-              <FormTextArea
-                icon="align-center"
-                autoCorrect={false}
-                blurOnSubmit={false}
-                autoCapitalize="none"
-                placeholder="Descrição"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  inputs.thirdTextInput.focus();
-                }}
-                ref={input => {
-                  inputs.secondTextInput = input;
-                }}
-                multiline={true}
-                numberOfLines={10}
-              />
-
-              <FormInput
-                icon="image"
-                autoCorrect={false}
-                autoCapitalize="none"
-                blurOnSubmit={false}
-                placeholder="Foto"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  inputs.fourthTextInput.focus();
-                }}
-                ref={input => {
-                  inputs.thirdTextInput = input;
-                }}
-              />
-
-              <FormInput
-                icon="users"
-                autoCorrect={false}
-                autoCapitalize="none"
-                placeholder="Público alvo"
-                returnKeyType="next"
-                ref={input => {
-                  inputs.fourthTextInput = input;
-                }}
-              />
-
-              <SubmitButton onPress={() => navigation.navigate('SignUp')}>
-                Adicionar
-              </SubmitButton>
-            </Form>
-          </Container>
-        </DismissKeyboard>
-      </ScrollView>
-    </BackgroundColor>
-  );
+              <DescriptionText>
+                {description}
+              </DescriptionText>
+            </Container>
+          </DismissKeyboard>
+        </ScrollView>
+      </BackgroundColor>
+    );
+  }
 }
