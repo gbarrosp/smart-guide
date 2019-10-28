@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import logoImage from '~/assets/logo.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import Icon from 'react-native-vector-icons/Feather';
-import { CameraKitCameraScreen, } from 'react-native-camera-kit';
+import { CameraKitCameraScreen } from 'react-native-camera-kit';
+import { PermissionsAndroid } from 'react-native';
 
 import {
   Container,
@@ -22,25 +23,18 @@ import {
 export default class Home extends Component {
   constructor() {
     super();
+    global.user_knowledge = 1;
     this.state = {
-      //variable to hold the qr value
       qrvalue: '',
-      opneScanner: false,
+      openScanner: false,
     };
   }
 
-  onOpenlink() {
-    //Function to open URL, If scanned
-    Linking.openURL(this.state.qrvalue);
-    //Linking used to open the URL in any browser that you have installed
-  }
   onBarcodeScan(qrvalue) {
-    //called after te successful scanning of QRCode/Barcode
-    this.setState({ qrvalue: qrvalue });
-    console.log(this.state.qrvalue)
-    this.setState({ opneScanner: false });
+    this.setState({ qrvalue: qrvalue }, () => global.current_stand = this.state.qrvalue);
+    this.setState({ openScanner: false}, () => this.props.navigation.navigate('StandPlayer'));
   }
-  onOpneScanner() {
+  onOpenScanner() {
     var that =this;
     //To Start Scanning
     if(Platform.OS === 'android'){
@@ -55,7 +49,7 @@ export default class Home extends Component {
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //If CAMERA Permission is granted
             that.setState({ qrvalue: '' });
-            that.setState({ opneScanner: true });
+            that.setState({ openScanner: true });
           } else {
             alert("CAMERA permission denied");
           }
@@ -68,91 +62,88 @@ export default class Home extends Component {
       requestCameraPermission();
     }else{
       that.setState({ qrvalue: '' });
-      that.setState({ opneScanner: true });
+      that.setState({ openScanner: true });
     }
   }
 
 
   render(){
-      const {navigation} = this.props;
-
+    const {navigation} = this.props;
+    if (!this.state.openScanner) {
       return(
-      <BackgroundColor>
-        <Container>
-          <Header>
-            <HelpIcon>
-              <Icon
-                onPress={() => navigation.navigate('Help')}
-                name={'help-circle'}
-                size={40}
-                color="white"
-              />
-            </HelpIcon>
-            <LogoText onPress={() => navigation.navigate('SignIn')}>
-              SmartGuide
-            </LogoText>
-            <SettingsIcon>
-              <Icon
-                name={'settings'}
-                size={40}
-                color="white"
-                onPress={() => navigation.navigate('MyAccount')}
-              />
-            </SettingsIcon>
-          </Header>
+        <BackgroundColor>
+          <Container>
+            <Header>
+              <HelpIcon>
+                <Icon
+                  onPress={() => navigation.navigate('Help')}
+                  name={'help-circle'}
+                  size={40}
+                  color="white"
+                />
+              </HelpIcon>
+              <LogoText onPress={() => navigation.navigate('SignIn')}>
+                SmartGuide
+              </LogoText>
+              <SettingsIcon>
+                <Icon
+                  name={'settings'}
+                  size={40}
+                  color="white"
+                  onPress={() => navigation.navigate('MyAccount')}
+                />
+              </SettingsIcon>
+            </Header>
 
-          <Scan>
-            <Icon name={'camera'} size={150} color="white"
-              onPress={() => this.onOpneScanner()}></Icon>
-            {/* <CameraKitCameraScreen
-              showFrame={false}
-              //Show/hide scan frame
-              scanBarcode={true}
-              //Can restrict for the QR Code only
-              laserColor={'blue'}
-              //Color can be of your choice
-              frameColor={'yellow'}
-              //If frame is visible then frame color
-              colorForScannerFrame={'black'}
-              //Scanner Frame color
-              onReadCode={event =>
-                this.onBarcodeScan(event.nativeEvent.codeStringValue)
-              }
-            /> */}
-          </Scan>
+            <Scan>
+              <Icon name={'camera'} size={150} color="white"
+                onPress={() => this.onOpenScanner()}></Icon>
+            </Scan>
 
-          <Footer>
-            <FooterItem>
-              <InfoIcon>
-                <Icon
-                  name={'info'}
-                  size={40}
-                  color="white"
-                  onPress={() => navigation.navigate('About')}
-                />
-              </InfoIcon>
-            </FooterItem>
-            <FooterItem>
-              <ListIcon>
-                <Icon
-                  name={'list'}
-                  size={40}
-                  color="white"
-                  onPress={() => navigation.navigate('ListStands')}
-                />
-              </ListIcon>
-              <AddItemIcon>
-                <Icon
-                  name={'plus-circle'}
-                  size={40}
-                  color="white"
-                  onPress={() => navigation.navigate('NewStand')}
-                />
-              </AddItemIcon>
-            </FooterItem>
-          </Footer>
-        </Container>
-      </BackgroundColor>
+            <Footer>
+              <FooterItem>
+                <InfoIcon>
+                  <Icon
+                    name={'info'}
+                    size={40}
+                    color="white"
+                    onPress={() => navigation.navigate('About')}
+                  />
+                </InfoIcon>
+              </FooterItem>
+              <FooterItem>
+                <ListIcon>
+                  <Icon
+                    name={'list'}
+                    size={40}
+                    color="white"
+                    onPress={() => navigation.navigate('ListStands')}
+                  />
+                </ListIcon>
+                <AddItemIcon>
+                  <Icon
+                    name={'plus-circle'}
+                    size={40}
+                    color="white"
+                    onPress={() => navigation.navigate('NewStand')}
+                  />
+                </AddItemIcon>
+              </FooterItem>
+            </Footer>
+          </Container>
+        </BackgroundColor>
+      )
+    }
+    return(
+      <CameraKitCameraScreen
+      showFrame={false}
+      scanBarcode={true}
+      frameColor={'yellow'}
+      colorForScannerFrame={'black'}
+      onReadCode={event =>
+        this.onBarcodeScan(event.nativeEvent.codeStringValue)
+      }
+      />
     )
   };
 }
