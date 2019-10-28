@@ -12,6 +12,7 @@ import NewStand from './pages/NewStand';
 import ListStands from './pages/ListStands';
 import Help from './pages/Help';
 import About from './pages/About';
+import StandPlayer from './pages/StandPlayer'
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -25,6 +26,7 @@ export default (isSigned = false) =>
           Home,
           MyAccount,
           NewStand,
+          StandPlayer,
           ListStands,
           Help,
           About,

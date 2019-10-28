@@ -7,7 +7,6 @@ import Header from '~/components/Header';
 import {Container, Title, Text} from './styles';
 
 export default function About({navigation}) {
-  console.log(global.current_stand)
   return (
     <BackgroundColor>
       <Container>

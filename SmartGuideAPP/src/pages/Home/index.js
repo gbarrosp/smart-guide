@@ -31,7 +31,7 @@ export default class Home extends Component {
 
   onBarcodeScan(qrvalue) {
     this.setState({ qrvalue: qrvalue }, () => global.current_stand = this.state.qrvalue);
-    this.setState({ openScanner: false}, () => this.props.navigation.navigate('About'));
+    this.setState({ openScanner: false}, () => this.props.navigation.navigate('StandPlayer'));
   }
   onOpenScanner() {
     var that =this;
