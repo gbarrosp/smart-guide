@@ -23,7 +23,6 @@ import {
 export default class Home extends Component {
   constructor() {
     super();
-    global.user_knowledge = 1;
     this.state = {
       qrvalue: '',
       openScanner: false,
@@ -69,6 +68,8 @@ export default class Home extends Component {
 
   render(){
     const {navigation} = this.props;
+    const is_guest = global.user_data.is_guest
+
     if (!this.state.openScanner) {
       return(
         <BackgroundColor>
