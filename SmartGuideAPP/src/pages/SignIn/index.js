@@ -22,6 +22,7 @@ import {
 export default class SignIn extends Component {
   constructor() {
     super();
+    global.username = 1
     this.state = {
       showPass: true,
       press: false,
@@ -44,9 +45,19 @@ export default class SignIn extends Component {
       }
     ).then(result => {
       console.log('User authenticated')
-      console.log(result.data)
+      global.user_token = result.data.token
+      // global.username = this.state.user
+      api.get(`user/${global.username}/`,{
+        headers: {
+          Authorization: `Token ${global.user_token}`
+        }
+      }).then(response => {
+        global.user_data = response.data
+      }).catch(error => console.log(error));
+
       this.props.navigation.navigate('Home')
     }).catch(error => console.log(error));
+
   }
 
 

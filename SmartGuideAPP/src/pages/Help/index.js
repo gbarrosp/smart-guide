@@ -37,7 +37,7 @@ export default class NewStand extends Component {
       console.log('L48')
       api.get('questions/', {
       headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+        Authorization: `Token ${global.user_token}`
       }
     }).then(result => {
       console.log(result.data);

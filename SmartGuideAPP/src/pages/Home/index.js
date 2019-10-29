@@ -23,7 +23,6 @@ import {
 export default class Home extends Component {
   constructor() {
     super();
-    global.user_knowledge = 1;
     this.state = {
       qrvalue: '',
       openScanner: false,
