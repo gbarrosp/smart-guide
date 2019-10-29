@@ -6,6 +6,7 @@ import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 // import BackgroundColor from '~/components/Background';
 import DismissKeyboard from '~/components/DismissKeyboard';
+import api from '../../services/api';
 
 import {
   Container,
@@ -21,9 +22,12 @@ import {
 export default class SignIn extends Component {
   constructor() {
     super();
+    global.username = 1
     this.state = {
       showPass: true,
       press: false,
+      user: '',
+      password: '',
     };
   }
 
@@ -33,8 +37,33 @@ export default class SignIn extends Component {
     this.setState({showPass: !showPass, press: !press});
   };
 
+  loginUser = () => {
+    api.post('auth/login/',
+      {
+        username: this.state.user,
+        password: this.state.password
+      }
+    ).then(result => {
+      console.log('User authenticated')
+      global.user_token = result.data.token
+      // global.username = this.state.user
+      api.get(`user/${global.username}/`,{
+        headers: {
+          Authorization: `Token ${global.user_token}`
+        }
+      }).then(response => {
+        global.user_data = response.data
+      }).catch(error => console.log(error));
+
+      this.props.navigation.navigate('Home')
+    }).catch(error => console.log(error));
+
+  }
+
+
   render() {
     const {navigation} = this.props;
+    const {user, password} = this.state;
 
     return (
       <BackgroundColor source={bgImage}>
@@ -49,6 +78,8 @@ export default class SignIn extends Component {
                 autoCapitalize="none"
                 placeholder="Usuário"
                 returnKeyType="next"
+                value={user}
+                onChangeText={text =>  this.setState({user: text})}
                 blurOnSubmit={false}
                 onSubmitEditing={() => {
                   this.secondTextInput.focus();
@@ -61,12 +92,15 @@ export default class SignIn extends Component {
                 secureTextEntry={this.state.showPass}
                 placeholder="Senha"
                 returnKeyType="go"
+                value={password}
+                onChangeText={text =>  this.setState({password: text})}
+                onSubmitEditing={this.loginUser}
                 ref={input => {
                   this.secondTextInput = input;
                 }}
               />
 
-              <SubmitButton onPress={() => navigation.navigate('Home')}>
+              <SubmitButton onPress={this.loginUser}>
                 Entrar
               </SubmitButton>
               <SubmitButton onPress={() => navigation.navigate('SignUp')}>

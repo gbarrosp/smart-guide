@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'localhost:8000/api/',
+  baseURL: 'https://smartguide-api.herokuapp.com/api/',
 });
 
 export default api;
