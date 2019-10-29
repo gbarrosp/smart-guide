@@ -7,12 +7,9 @@ import DismissKeyboard from '~/components/DismissKeyboard';
 import Header from '~/components/Header';
 import api from '../../services/api';
 
-import {
-  Container,
-  DescriptionText
-} from './styles';
+import {Container, DescriptionText} from './styles';
 
-export default class StandPlayer extends Component{
+export default class StandPlayer extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,24 +19,28 @@ export default class StandPlayer extends Component{
     };
   }
 
-  componentDidMount(){
-    api.get(`stands/${this.state.stand_id}/`, {
-      headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
-      }
-    }).then(result => {
+  componentDidMount() {
+    api
+      .get(`stands/${this.state.stand_id}/`, {
+        headers: {
+          Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b',
+        },
+      })
+      .then(result => {
         this.setState({title: result.data.name});
-    });
-    api.get(`descriptions/${this.state.stand_id}/${global.user_knowledge}`, {
-      headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
-      }
-    }).then(result => {
+      });
+    api
+      .get(`descriptions/${this.state.stand_id}/${global.user_knowledge}`, {
+        headers: {
+          Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b',
+        },
+      })
+      .then(result => {
         this.setState({description: result.data.description});
-    });
+      });
   }
 
-  render(){
+  render() {
     const {navigation} = this.props;
     const {title, description} = this.state;
 
@@ -54,9 +55,7 @@ export default class StandPlayer extends Component{
                 navigation={navigation}
                 size="big"
               />
-              <DescriptionText>
-                {description}
-              </DescriptionText>
+              <DescriptionText>{description}</DescriptionText>
             </Container>
           </DismissKeyboard>
         </ScrollView>

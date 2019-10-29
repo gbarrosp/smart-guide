@@ -9,10 +9,6 @@ import Header from '~/components/Header';
 
 import {
   Container,
-  ScreenTitle,
-  Image,
-  SignLink,
-  SignLinkText,
   StandTitle,
   StandDescription,
   StandContainer,
@@ -21,47 +17,34 @@ import {
 } from './styles';
 
 export default class NewStand extends Component {
-  _isMounted = false;
-  constructor(props){
-    super(props)
-    console.log('State set, is mounted?', this._isMounted)
+  constructor(props) {
+    super(props);
+    // console.log('State set, is mounted?', this._isMounted);
     this.state = {
-      stands: []
+      stands: [],
     };
   }
 
-  componentDidMount() {
-    this._isMounted = true;
-    console.log('My Turn, is mount?', this._isMounted)
-    if (this.state.stands.length === 0){
-      console.log('L48')
-      api.get('questions/', {
+  handleQuestions = async () => {
+    const questions = await api.get('questions/', {
       headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
-      }
-    }).then(result => {
-      console.log(result.data);
-      console.log('Monted now?', this._isMounted)
-      if (this._isMounted) {
-        console.log('New State')
-        this.setState({stands: result.data});
-      }
-    });}
+        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b',
+      },
+    });
+
+    this.setState({stands: questions.data});
   };
 
-  componentWillUnmount() {
-    console.log('L51')
-    this._isMounted = false;
+  componentDidMount() {
+    this.handleQuestions();
   }
 
   render() {
     const {navigation} = this.props;
-    // const {stands} = this.state;
-    console.log('Rendered!')
-    return(
+    return (
       <BackgroundColor>
         <Container>
-          <Header title="Ajuda" to="Home" navigation={navigation.navigate('Home')} />
+          <Header title="Ajuda" to="Home" navigation={navigation} />
           <FlatList
             data={this.state.stands}
             keyExtractor={(item, index) => index.toString()}
@@ -78,5 +61,6 @@ export default class NewStand extends Component {
           />
         </Container>
       </BackgroundColor>
-    )};
+    );
+  }
 }
