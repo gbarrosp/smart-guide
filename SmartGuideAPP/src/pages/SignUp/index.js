@@ -43,7 +43,17 @@ export default class SignUp extends Component {
     ).then(result => {
       console.log('User registered')
       console.log(result.data)
-      this.props.navigation.navigate('Home')
+      global.user_token = result.data.token
+      // global.username = result.data.username
+      api.get(`user/${global.username}/`,{
+        headers: {
+          Authorization: `Token ${global.user_token}`
+        }
+      }).then(response => {
+        global.user_data = response.data
+      }).catch(error => console.log(error));
+
+      this.props.navigation.navigate('MyAccount')
     }).catch(error => console.log(error));
   }
 

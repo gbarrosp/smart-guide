@@ -23,18 +23,13 @@ export default class StandPlayer extends Component{
   }
 
   componentDidMount(){
-    api.get(`stands/${this.state.stand_id}/`, {
+    const user_knowledge = global.user_data.knowledge
+    api.get(`descriptions/${this.state.stand_id}/${user_knowledge}`, {
       headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
+        Authorization: `Token ${global.user_token}`
       }
     }).then(result => {
-        this.setState({title: result.data.name});
-    });
-    api.get(`descriptions/${this.state.stand_id}/${global.user_knowledge}`, {
-      headers: {
-        Authorization: 'Token 7577768a0a00d333e3bd032227b2a64f546d849b'
-      }
-    }).then(result => {
+        this.setState({title: result.data.stand_name})
         this.setState({description: result.data.description});
     });
   }
