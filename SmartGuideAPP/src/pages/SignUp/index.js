@@ -44,7 +44,7 @@ export default class SignUp extends Component {
       console.log('User registered')
       console.log(result.data)
       global.user_token = result.data.token
-      // global.username = result.data.username
+      global.username = result.data.username
       api.get(`user/${global.username}/`,{
         headers: {
           Authorization: `Token ${global.user_token}`

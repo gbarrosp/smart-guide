@@ -68,7 +68,7 @@ export default class Home extends Component {
 
   render(){
     const {navigation} = this.props;
-    const is_guest = global.user_data.is_guest
+    const is_host = global.user_data.is_host
 
     if (!this.state.openScanner) {
       return(
@@ -112,7 +112,8 @@ export default class Home extends Component {
                   />
                 </InfoIcon>
               </FooterItem>
-              <FooterItem>
+              {is_host &&
+                <FooterItem>
                 <ListIcon>
                   <Icon
                     name={'list'}
@@ -130,6 +131,7 @@ export default class Home extends Component {
                   />
                 </AddItemIcon>
               </FooterItem>
+              }
             </Footer>
           </Container>
         </BackgroundColor>
