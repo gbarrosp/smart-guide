@@ -22,7 +22,6 @@ import {
 export default class SignIn extends Component {
   constructor() {
     super();
-    global.username = 1
     this.state = {
       showPass: true,
       press: false,
@@ -46,13 +45,15 @@ export default class SignIn extends Component {
     ).then(result => {
       console.log('User authenticated')
       global.user_token = result.data.token
-      // global.username = this.state.user
+      global.username = this.state.user
+      console.log(global.username)
       api.get(`user/${global.username}/`,{
         headers: {
           Authorization: `Token ${global.user_token}`
         }
       }).then(response => {
         global.user_data = response.data
+        console.log(global.user_data)
       }).catch(error => console.log(error));
 
       this.props.navigation.navigate('Home')
@@ -108,9 +109,9 @@ export default class SignIn extends Component {
               </SubmitButton>
             </Form>
 
-            <SignLink onPress={() => navigation.navigate('SignUp')}>
+            {/* <SignLink onPress={() => navigation.navigate('SignUp')}>
               <SignLinkText>Esqueci minha senha</SignLinkText>
-            </SignLink>
+            </SignLink> */}
           </Container>
         </DismissKeyboard>
         {/* <ImageBackground source={bgImage} style={styles.backgroundContainer}> */}
