@@ -12,7 +12,7 @@ import NewStand from './pages/NewStand';
 import ListStands from './pages/ListStands';
 import Help from './pages/Help';
 import About from './pages/About';
-import StandPlayer from './pages/StandPlayer'
+import StandPlayer from './pages/StandPlayer';
 
 export default (isSigned = false) =>
   createAppContainer(

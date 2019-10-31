@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import logoImage from '~/assets/logo.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import Icon from 'react-native-vector-icons/Feather';
-import { CameraKitCameraScreen } from 'react-native-camera-kit';
-import { PermissionsAndroid } from 'react-native';
+import {CameraKitCameraScreen} from 'react-native-camera-kit';
+import {PermissionsAndroid} from 'react-native';
 
 import {
   Container,
@@ -30,48 +30,53 @@ export default class Home extends Component {
   }
 
   onBarcodeScan(qrvalue) {
-    this.setState({ qrvalue: qrvalue }, () => global.current_stand = this.state.qrvalue);
-    this.setState({ openScanner: false}, () => this.props.navigation.navigate('StandPlayer'));
+    this.setState(
+      {qrvalue: qrvalue},
+      () => (global.current_stand = this.state.qrvalue),
+    );
+    this.setState({openScanner: false}, () =>
+      this.props.navigation.navigate('StandPlayer'),
+    );
   }
   onOpenScanner() {
-    var that =this;
+    var that = this;
     //To Start Scanning
-    if(Platform.OS === 'android'){
+    if (Platform.OS === 'android') {
       async function requestCameraPermission() {
         try {
           const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.CAMERA,{
-              'title': 'CameraExample App Camera Permission',
-              'message': 'CameraExample App needs access to your camera '
-            }
-          )
+            PermissionsAndroid.PERMISSIONS.CAMERA,
+            {
+              title: 'CameraExample App Camera Permission',
+              message: 'CameraExample App needs access to your camera ',
+            },
+          );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //If CAMERA Permission is granted
-            that.setState({ qrvalue: '' });
-            that.setState({ openScanner: true });
+            that.setState({qrvalue: ''});
+            that.setState({openScanner: true});
           } else {
-            alert("CAMERA permission denied");
+            alert('CAMERA permission denied');
           }
         } catch (err) {
-          alert("Camera permission err",err);
+          alert('Camera permission err', err);
           console.warn(err);
         }
       }
       //Calling the camera permission function
       requestCameraPermission();
-    }else{
-      that.setState({ qrvalue: '' });
-      that.setState({ openScanner: true });
+    } else {
+      that.setState({qrvalue: ''});
+      that.setState({openScanner: true});
     }
   }
 
-
-  render(){
+  render() {
     const {navigation} = this.props;
-    const is_host = global.user_data.is_host
+    const is_host = true;
 
     if (!this.state.openScanner) {
-      return(
+      return (
         <BackgroundColor>
           <Container>
             <Header>
@@ -97,7 +102,10 @@ export default class Home extends Component {
             </Header>
 
             <Scan>
-              <Icon name={'camera'} size={150} color="white"
+              <Icon
+                name={'camera'}
+                size={150}
+                color="white"
                 onPress={() => this.onOpenScanner()}></Icon>
             </Scan>
 
@@ -112,41 +120,41 @@ export default class Home extends Component {
                   />
                 </InfoIcon>
               </FooterItem>
-              {is_host &&
+              {is_host && (
                 <FooterItem>
-                <ListIcon>
-                  <Icon
-                    name={'list'}
-                    size={40}
-                    color="white"
-                    onPress={() => navigation.navigate('ListStands')}
-                  />
-                </ListIcon>
-                <AddItemIcon>
-                  <Icon
-                    name={'plus-circle'}
-                    size={40}
-                    color="white"
-                    onPress={() => navigation.navigate('NewStand')}
-                  />
-                </AddItemIcon>
-              </FooterItem>
-              }
+                  <ListIcon>
+                    <Icon
+                      name={'list'}
+                      size={40}
+                      color="white"
+                      onPress={() => navigation.navigate('ListStands')}
+                    />
+                  </ListIcon>
+                  <AddItemIcon>
+                    <Icon
+                      name={'plus-circle'}
+                      size={40}
+                      color="white"
+                      onPress={() => navigation.navigate('NewStand')}
+                    />
+                  </AddItemIcon>
+                </FooterItem>
+              )}
             </Footer>
           </Container>
         </BackgroundColor>
-      )
+      );
     }
-    return(
+    return (
       <CameraKitCameraScreen
-      showFrame={false}
-      scanBarcode={true}
-      frameColor={'yellow'}
-      colorForScannerFrame={'black'}
-      onReadCode={event =>
-        this.onBarcodeScan(event.nativeEvent.codeStringValue)
-      }
+        showFrame={false}
+        scanBarcode={true}
+        frameColor={'yellow'}
+        colorForScannerFrame={'black'}
+        onReadCode={event =>
+          this.onBarcodeScan(event.nativeEvent.codeStringValue)
+        }
       />
-    )
-  };
+    );
+  }
 }
