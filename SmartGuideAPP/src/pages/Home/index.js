@@ -68,7 +68,8 @@ export default class Home extends Component {
 
   render(){
     const {navigation} = this.props;
-    const is_host = global.user_data.is_host
+    // const is_host = global.user_data.is_host
+    const is_host = false
 
     if (!this.state.openScanner) {
       return(
