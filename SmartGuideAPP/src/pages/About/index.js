@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {TouchableOpacity} from 'react-native';
 
 import BackgroundColor from '~/components/BackgroundImage';
 import Header from '~/components/Header';
@@ -8,6 +7,7 @@ import {Container, Title, Text} from './styles';
 
 export default class About extends Component {
   render(){
+    const {navigation} = this.props;
 
     return (
       <BackgroundColor>

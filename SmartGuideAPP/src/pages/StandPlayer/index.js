@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
+import Tts from 'react-native-tts';
 
-import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
 import Header from '~/components/Header';
@@ -19,6 +19,13 @@ export default class StandPlayer extends Component {
     };
   }
 
+  readDescription(){
+    Tts.getInitStatus().then(() => {
+      Tts.speak(this.state.title);
+      Tts.speak(this.state.description);
+    });
+  }
+
   componentDidMount() {
     const user_knowledge = global.user_data.knowledge;
     api
@@ -29,7 +36,7 @@ export default class StandPlayer extends Component {
       })
       .then(result => {
         this.setState({title: result.data.stand_name});
-        this.setState({description: result.data.description});
+        this.setState({description: result.data.description}, this.readDescription);
       });
   }
 
