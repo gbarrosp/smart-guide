@@ -20,9 +20,10 @@ export default class StandPlayer extends Component {
   }
 
   readDescription(){
+    const standText = this.state.title + '.' + this.state.description
     Tts.getInitStatus().then(() => {
-      Tts.speak(this.state.title);
-      Tts.speak(this.state.description);
+      // Tts.speak(this.state.title);
+      Tts.speak(standText);
     });
   }
 
