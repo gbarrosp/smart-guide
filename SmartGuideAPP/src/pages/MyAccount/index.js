@@ -5,6 +5,7 @@ import logoImage from '~/assets/stemi_GG.png';
 import BackgroundColor from '~/components/BackgroundImage';
 import DismissKeyboard from '~/components/DismissKeyboard';
 import Header from '~/components/Header';
+import api from '../../services/api';
 
 import {Container, Image, Form, FormInput, SubmitButton} from './styles';
 
@@ -12,41 +13,37 @@ export default class MyAccount extends Component {
   constructor() {
     super();
     this.state = {
-      changeUser: '',
-      changeEmail: '',
-      changeAge: '',
-      changeKnowledge: '',
+      changeName: global.user_data.name,
+      // changeEmail: '',
+      changeAge: global.user_data.age.toString(),
+      changeKnowledge: global.user_data.knowledge,
     };
   }
 
   updateUser = () => {
-    console.log('Update this little guy')
-    console.log(this.state)
-    // api.post('auth/register/',
-    //   {
-    //     username: this.state.changeUser,
-    //     password: this.state.changeUserPassword
-    //   }
-    // ).then(result => {
-    //   console.log('User registered')
-    //   console.log(result.data)
-    //   global.user_token = result.data.token
-    //   global.username = result.data.username
-    //   api.get(`user/${global.username}/`,{
-    //     headers: {
-    //       Authorization: `Token ${global.user_token}`
-    //     }
-    //   }).then(response => {
-    //     global.user_data = response.data
-    //   }).catch(error => console.log(error));
-
-    //   this.props.navigation.navigate('MyAccount')
-    // }).catch(error => console.log(error));
+    api.post('user/',
+      {
+        username: global.user_data.username,
+        name: this.state.changeName,
+        age: this.state.changeAge,
+        knowledge: this.state.changeKnowledge,
+      },{
+          headers: {
+            Authorization: `Token ${global.user_token}`,
+        }
+      }
+    ).then( () => {
+      global.user_data.name = this.state.changeName
+      global.user_data.age = this.state.changeAge
+      global.user_data.knowledge = this.state.changeKnowledge
+    }
+    ).catch(error => console.log(error));
   }
 
   render(){
     const {navigation} = this.props;
-    const {changeUser, changeEmail, changeAge, changeKnowledge } = this.state;
+    const {changeName, changeAge, changeKnowledge } = this.state;
+    const user = global.user_data
 
     return (
       <BackgroundColor>
@@ -67,17 +64,17 @@ export default class MyAccount extends Component {
                   autoCorrect={false}
                   blurOnSubmit={false}
                   autoCapitalize="none"
-                  placeholder="Nome"
+                  placeholder={user.name}
                   returnKeyType="next"
-                  value={changeUser}
-                  onChangeText={text =>  this.setState({changeUser: text})}
+                  value={changeName}
+                  onChangeText={text =>  this.setState({changeName: text})}
                   onSubmitEditing={() => {
                     this.secondTextInput.focus();
                   }}
                 />
 
 
-                <FormInput
+                {/* <FormInput
                   icon="mail"
                   autoCorrect={false}
                   blurOnSubmit={false}
@@ -93,7 +90,7 @@ export default class MyAccount extends Component {
                   ref={input => {
                     this.secondTextInput = input;
                   }}
-                />
+                /> */}
 
                 <FormInput
                   icon="smile"
@@ -101,7 +98,7 @@ export default class MyAccount extends Component {
                   autoCorrect={false}
                   autoCapitalize="none"
                   keyboardType={'numeric'}
-                  placeholder="Idade"
+                  placeholder={user.age.toString()}
                   returnKeyType="next"
                   value={changeAge}
                   onSubmitEditing={Keyboard.dismiss}
